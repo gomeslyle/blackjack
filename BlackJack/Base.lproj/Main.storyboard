@@ -774,10 +774,20 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="YpC-55-Thm"/>
                             </imageView>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aka-Td-EGx">
-                                <rect key="frame" x="410" y="214" width="84" height="84"/>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4sT-D6-PoK">
+                                <rect key="frame" x="191" y="214" width="84" height="84"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="WJg-ET-5xZ"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="r5H-As-Q6y"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V0L-uN-fo6">
+                                <rect key="frame" x="191" y="131" width="84" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="flw-uO-sKS"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9YF-iz-nQz">
+                                <rect key="frame" x="191" y="48" width="84" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="87c-nw-3G3"/>
                             </imageView>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PiZ-zR-aLm">
                                 <rect key="frame" x="493" y="214" width="84" height="84"/>
@@ -825,15 +835,6 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AhN-H0-wbl">
-                                <rect key="frame" x="215" y="164" width="171" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Result" id="sTG-SY-tLD">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lvv-2b-squ">
                                 <rect key="frame" x="478" y="23" width="37" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -843,6 +844,35 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AhN-H0-wbl">
+                                <rect key="frame" x="215" y="164" width="171" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Result" id="sTG-SY-tLD">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aka-Td-EGx">
+                                <rect key="frame" x="410" y="214" width="84" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="WJg-ET-5xZ"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yUn-w5-Qaf">
+                                <rect key="frame" x="327" y="214" width="84" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="sXQ-V9-fSk"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ioG-jS-GHu">
+                                <rect key="frame" x="326" y="131" width="84" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="89c-tn-yab"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ueL-N1-HLA">
+                                <rect key="frame" x="327" y="48" width="84" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="ilI-ni-gFQ"/>
+                            </imageView>
                         </subviews>
                     </view>
                     <connections>
@@ -854,6 +884,9 @@
                         <outlet property="DealerCard4" destination="PiZ-zR-aLm" id="3kI-zS-UKd"/>
                         <outlet property="DealerCard5" destination="rIP-es-cnn" id="vbA-nu-znb"/>
                         <outlet property="DealerCard6" destination="bBA-YV-qSX" id="chM-Pt-Rtf"/>
+                        <outlet property="DealerCard7" destination="yUn-w5-Qaf" id="f9c-4f-iYQ"/>
+                        <outlet property="DealerCard8" destination="e28-p0-CNd" id="dZV-7E-XLX"/>
+                        <outlet property="DealerCard9" destination="ueL-N1-HLA" id="WVD-fG-436"/>
                         <outlet property="DealerScoreTextField" destination="lvv-2b-squ" id="Bn2-yY-X75"/>
                         <outlet property="HitButton" destination="KpO-X4-5Fd" id="sdd-pG-Xvz"/>
                         <outlet property="MatchResult" destination="AhN-H0-wbl" id="n8i-0J-Hev"/>
@@ -863,6 +896,9 @@
                         <outlet property="PlayerCard4" destination="fnX-yT-x5X" id="H1M-N5-5Sc"/>
                         <outlet property="PlayerCard5" destination="2nk-ci-Xmg" id="jkd-iz-KOx"/>
                         <outlet property="PlayerCard6" destination="xkD-HC-cia" id="Nbj-h4-gB8"/>
+                        <outlet property="PlayerCard7" destination="4sT-D6-PoK" id="YN7-KL-TJG"/>
+                        <outlet property="PlayerCard8" destination="9YF-iz-nQz" id="2hI-94-ReC"/>
+                        <outlet property="PlayerCard9" destination="9YF-iz-nQz" id="wmK-ee-coq"/>
                         <outlet property="PlayerScoreTextField" destination="sfo-hI-BpL" id="gXx-Jj-Evh"/>
                         <outlet property="StandButton" destination="Yx9-F9-j5t" id="PJR-uJ-bhS"/>
                         <outlet property="WelcomeToBlackJackTextField" destination="h5t-u5-8CT" id="os4-1g-6ie"/>

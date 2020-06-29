@@ -61,6 +61,9 @@ class Deck {
         }
         self.Cards = self.shuffleDeck()
     }
+    func reshuffleDeck() {
+        self.Cards = shuffleDeck()
+    }
     func shuffleDeck() -> [Card] {
         var shuffledDeck = [Card]()
         for _ in self.Cards {

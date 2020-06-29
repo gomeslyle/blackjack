@@ -9,7 +9,7 @@
 import Cocoa
 
 class ViewController: NSViewController {
-    
+
     @IBOutlet weak var WelcomeToBlackJackTextField: NSTextField!
     @IBOutlet weak var BlackJackImage: NSImageView!
     
@@ -23,12 +23,20 @@ class ViewController: NSViewController {
     @IBOutlet weak var PlayerCard4: NSImageView!
     @IBOutlet weak var PlayerCard5: NSImageView!
     @IBOutlet weak var PlayerCard6: NSImageView!
+    @IBOutlet weak var PlayerCard7: NSImageView!
+    @IBOutlet weak var PlayerCard8: NSImageView!
+    @IBOutlet weak var PlayerCard9: NSImageView!
+    
     @IBOutlet weak var DealerCard1: NSImageView!
     @IBOutlet weak var DealerCard2: NSImageView!
     @IBOutlet weak var DealerCard3: NSImageView!
     @IBOutlet weak var DealerCard4: NSImageView!
     @IBOutlet weak var DealerCard5: NSImageView!
     @IBOutlet weak var DealerCard6: NSImageView!
+    @IBOutlet weak var DealerCard7: NSImageView!
+    @IBOutlet weak var DealerCard8: NSImageView!
+    @IBOutlet weak var DealerCard9: NSImageView!
+
     var PlayersCardsImageViews = [NSImageView!]()
     var DealersCardsImageViews = [NSImageView!]()
     
@@ -47,6 +55,7 @@ class ViewController: NSViewController {
     var DealersHand = [Card]()
     
     var FirstHand = BooleanLiteralType()
+    var NumberOfMatchesPlayed = Int()
     var PlayerWonMatch = BooleanLiteralType()
     
     override func viewDidLoad() {
@@ -55,6 +64,7 @@ class ViewController: NSViewController {
         for c in self.deck.Cards {
             print(c.rank.rawValue + " " + c.suit.rawValue + " " + String(c.value))
         }
+        self.NumberOfMatchesPlayed = -1
         self.imageViewsArrayInit()
         self.hideEndOfMatchViews()
         self.hideGameTimeViews()
@@ -74,18 +84,25 @@ class ViewController: NSViewController {
         self.PlayersCardsImageViews.append(self.PlayerCard4)
         self.PlayersCardsImageViews.append(self.PlayerCard5)
         self.PlayersCardsImageViews.append(self.PlayerCard6)
+        self.PlayersCardsImageViews.append(self.PlayerCard7)
+        self.PlayersCardsImageViews.append(self.PlayerCard8)
+        self.PlayersCardsImageViews.append(self.PlayerCard9)
         self.DealersCardsImageViews.append(self.DealerCard1)
         self.DealersCardsImageViews.append(self.DealerCard2)
         self.DealersCardsImageViews.append(self.DealerCard3)
         self.DealersCardsImageViews.append(self.DealerCard4)
         self.DealersCardsImageViews.append(self.DealerCard5)
         self.DealersCardsImageViews.append(self.DealerCard6)
+        self.DealersCardsImageViews.append(self.DealerCard7)
+        self.DealersCardsImageViews.append(self.DealerCard8)
+        self.DealersCardsImageViews.append(self.DealerCard9)
     }
     
     @IBAction func DealAction(_ sender: NSButton) {
         self.hideOpenningScreenViews()
         self.hideEndOfMatchViews()
         self.showGameTimeViews()
+        self.considerReshuffle()
         self.dealHand()
     }
     
@@ -156,6 +173,13 @@ class ViewController: NSViewController {
         self.DealersHand = [Card]()
     }
     
+    func considerReshuffle() {
+        if self.NumberOfMatchesPlayed % 6 == 0 {
+            self.deck.reshuffleDeck()
+            self.DeckIndex = 51
+        }
+    }
+    
     func dealNewHand() {
         
     }
@@ -167,6 +191,8 @@ class ViewController: NSViewController {
      */
     
     func dealHand() {
+        
+        self.NumberOfMatchesPlayed += 1
         
         var dealtCards = [Card]()
         for i in stride(from:self.DeckIndex, to: self.DeckIndex-4, by: -1) {
@@ -238,38 +264,33 @@ class ViewController: NSViewController {
             }
         }
         print("numberOfAcesInPlayersHand: " + String(numberOfAcesInPlayersHand))
-        print("numberOfAcesInPlayersHand: " + String(numberOfAcesInPlayersHand))
-        var foundValidScore = false
+        print("playersScoreWithoutAces: " + String(playersScoreWithoutAces))
+
         var validScores = [Int]()
         for numberOfAcesCountedAsEleven in 0...numberOfAcesInPlayersHand {
-            var score = playersScoreWithoutAces
-            score += numberOfAcesCountedAsEleven*11 + numberOfAcesInPlayersHand - numberOfAcesCountedAsEleven
+            let score = playersScoreWithoutAces + numberOfAcesCountedAsEleven*11 + numberOfAcesInPlayersHand - numberOfAcesCountedAsEleven
             if score <= 21 {
                 validScores.append(score)
-                foundValidScore = true
             }
         }
 
         var maxValidScore = -1
         for vs in validScores {
+            print("a valid score: " + String(vs))
             if vs > maxValidScore {
                 maxValidScore = vs
             }
         }
 
-        if numberOfAcesInPlayersHand > 0 && foundValidScore {
+        if maxValidScore != -1 {
             self.PlayersScore = maxValidScore
             self.PlayerScoreTextField.stringValue = String(self.PlayersScore)
-        } else if numberOfAcesInPlayersHand > 0 && !foundValidScore {
+        } else if self.PlayersScore >= 21 {
             MatchResult.stringValue = "Dealer wins"
+            self.PlayerScoreTextField.stringValue = String(self.PlayersScore)
             self.showEndOfMatchViews()
         }
-        if foundValidScore || self.PlayersScore <= 21 {
-            
-        } else {
-            MatchResult.stringValue = "Dealer wins"
-            self.showEndOfMatchViews()
-        }
+
     }
     
     //for c in self.deck.Cards {
