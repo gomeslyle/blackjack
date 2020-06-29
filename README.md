@@ -1,6 +1,6 @@
 # blackjack
 
-General Swift XCode Cocoa app. Runs on Mac OS desktop. Compile in XCode 9.0.
+General Swift XCode Cocoa app. Runs on Mac OS desktop. Compile in XCode 9.0 on High Sierra 10.13.1.
 
 Shuffle algorthim is from Victor Wooding's YouTube Video:
 https://www.youtube.com/watch?v=5hlw-KGfXtY
@@ -13,7 +13,8 @@ constructor is called).
 The BlackJack UI is made using TextViews, ImageViews, relationships, etc. Was very simple and intuitive using XCode drag and connect UI.
 
 Improvements:
-There are two functions that use the most of the same code and logic. They can be put into helper functions to increase code readability and reduce redundancy
+
+There are two functions that carry the most of the same code and logic. They can be put into helper functions to increase code readability and reduce redundancy
 (findResultOfMatchAfterPlayerHits() as well as findResultOfMatchAfterStands()).
 
 More source files should be added to group similar functionality together. Developers can read a single file and expect similar concepts within a single file.
