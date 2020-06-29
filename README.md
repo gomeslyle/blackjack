@@ -31,5 +31,6 @@ Citations:
  1. Victor Wooding's shuffling algorithm: https://www.youtube.com/watch?v=5hlw-KGfXtY
  2. Playing card PNG's obtained from here: http://acbl.mybigcommerce.com/52-playing-cards/
  3. BlackJack logo: https://iconscout.com/icon/black-jack-2038478
+ 4. I got the idea of using enumerating ranks and suits in Card classes from this blog post: https://www.associatedtype.net/2017/09/first-steps-with-swift-representing-cards-in-a-deck/
 
-I pretty much came up with all the code myself (apart from anything I searched up on Stackoverflow and Apple API documentation) except for the shuffle algorithm.
+Other than that, I pretty much wrote all the code myself (apart from anything & everything I searched up on Stackoverflow and Apple API documentation) except for the shuffle algorithm. But that's probably expected seeing as it's more a logical exercise as opposed to anything else.
