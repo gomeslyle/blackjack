@@ -144,12 +144,12 @@ class ViewController: NSViewController {
             print("dealer stands")
         } else {
             print("dealer hits")
-            // player still has the option to hit even if the dealer busts ;)
+// player still has the option to hit even if the dealer busts ;)
             /*
             if self.DealersScore > 21 {
                 self.findResultOfMatchAfterStands()
             }
-            */
+                */
         }
     }
     
