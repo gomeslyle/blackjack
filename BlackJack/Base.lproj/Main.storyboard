@@ -734,11 +734,6 @@
                                     <action selector="DealAction:" target="XfG-lQ-9wD" id="hYH-GJ-QmR"/>
                                 </connections>
                             </button>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3jU-KF-4M2">
-                                <rect key="frame" x="108" y="131" width="84" height="84"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="0g6-oM-oo7"/>
-                            </imageView>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nZW-gR-wxO">
                                 <rect key="frame" x="25" y="131" width="84" height="84"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -748,6 +743,11 @@
                                 <rect key="frame" x="108" y="48" width="84" height="84"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="9mW-m4-sdY"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3jU-KF-4M2">
+                                <rect key="frame" x="108" y="131" width="84" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="0g6-oM-oo7"/>
                             </imageView>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2nk-ci-Xmg">
                                 <rect key="frame" x="25" y="48" width="84" height="84"/>
@@ -788,6 +788,26 @@
                                 <rect key="frame" x="191" y="48" width="84" height="84"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="87c-nw-3G3"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aka-Td-EGx">
+                                <rect key="frame" x="410" y="214" width="84" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="WJg-ET-5xZ"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yUn-w5-Qaf">
+                                <rect key="frame" x="327" y="214" width="84" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="sXQ-V9-fSk"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ioG-jS-GHu">
+                                <rect key="frame" x="326" y="131" width="84" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="89c-tn-yab"/>
+                            </imageView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ueL-N1-HLA">
+                                <rect key="frame" x="327" y="48" width="84" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="ilI-ni-gFQ"/>
                             </imageView>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PiZ-zR-aLm">
                                 <rect key="frame" x="493" y="214" width="84" height="84"/>
@@ -853,26 +873,15 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aka-Td-EGx">
-                                <rect key="frame" x="410" y="214" width="84" height="84"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Pd-F5-ZhO">
+                                <rect key="frame" x="289" y="281" width="25" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="WJg-ET-5xZ"/>
-                            </imageView>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yUn-w5-Qaf">
-                                <rect key="frame" x="327" y="214" width="84" height="84"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="sXQ-V9-fSk"/>
-                            </imageView>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ioG-jS-GHu">
-                                <rect key="frame" x="326" y="131" width="84" height="84"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="89c-tn-yab"/>
-                            </imageView>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ueL-N1-HLA">
-                                <rect key="frame" x="327" y="48" width="84" height="84"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="ilI-ni-gFQ"/>
-                            </imageView>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="0/0" id="7V3-Yr-rJz">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
@@ -885,7 +894,7 @@
                         <outlet property="DealerCard5" destination="rIP-es-cnn" id="vbA-nu-znb"/>
                         <outlet property="DealerCard6" destination="bBA-YV-qSX" id="chM-Pt-Rtf"/>
                         <outlet property="DealerCard7" destination="yUn-w5-Qaf" id="f9c-4f-iYQ"/>
-                        <outlet property="DealerCard8" destination="e28-p0-CNd" id="dZV-7E-XLX"/>
+                        <outlet property="DealerCard8" destination="ioG-jS-GHu" id="DtD-A0-ud8"/>
                         <outlet property="DealerCard9" destination="ueL-N1-HLA" id="WVD-fG-436"/>
                         <outlet property="DealerScoreTextField" destination="lvv-2b-squ" id="Bn2-yY-X75"/>
                         <outlet property="HitButton" destination="KpO-X4-5Fd" id="sdd-pG-Xvz"/>
@@ -898,10 +907,11 @@
                         <outlet property="PlayerCard6" destination="xkD-HC-cia" id="Nbj-h4-gB8"/>
                         <outlet property="PlayerCard7" destination="4sT-D6-PoK" id="YN7-KL-TJG"/>
                         <outlet property="PlayerCard8" destination="9YF-iz-nQz" id="2hI-94-ReC"/>
-                        <outlet property="PlayerCard9" destination="9YF-iz-nQz" id="wmK-ee-coq"/>
+                        <outlet property="PlayerCard9" destination="V0L-uN-fo6" id="vBl-cW-Kdp"/>
                         <outlet property="PlayerScoreTextField" destination="sfo-hI-BpL" id="gXx-Jj-Evh"/>
                         <outlet property="StandButton" destination="Yx9-F9-j5t" id="PJR-uJ-bhS"/>
                         <outlet property="WelcomeToBlackJackTextField" destination="h5t-u5-8CT" id="os4-1g-6ie"/>
+                        <outlet property="WinRateTextField" destination="0Pd-F5-ZhO" id="fxd-Ta-YM5"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

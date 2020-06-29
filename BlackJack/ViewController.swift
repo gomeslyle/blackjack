@@ -12,6 +12,7 @@ class ViewController: NSViewController {
 
     @IBOutlet weak var WelcomeToBlackJackTextField: NSTextField!
     @IBOutlet weak var BlackJackImage: NSImageView!
+    @IBOutlet weak var WinRateTextField: NSTextField!
     
     @IBOutlet weak var DealButton: NSButton!
     @IBOutlet weak var StandButton: NSButton!
@@ -56,7 +57,10 @@ class ViewController: NSViewController {
     
     var FirstHand = BooleanLiteralType()
     var NumberOfMatchesPlayed = Int()
+    var NumberOfMatchesWonByPlayer = Int()
     var PlayerWonMatch = BooleanLiteralType()
+    var PlayerStands = BooleanLiteralType()
+    var DealerStands = BooleanLiteralType()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +73,16 @@ class ViewController: NSViewController {
         self.hideEndOfMatchViews()
         self.hideGameTimeViews()
         self.startNewGame()
+    }
+    
+    func startNewGame() {
+        self.FirstHand = true
+        self.PlayersScore = 0
+        self.DealersScore = 0
+        self.DisplayedDealersScore = 0
+        self.DeckIndex = 51
+        self.PlayersHand = [Card]()
+        self.DealersHand = [Card]()
     }
     
     override var representedObject: Any? {
@@ -87,6 +101,7 @@ class ViewController: NSViewController {
         self.PlayersCardsImageViews.append(self.PlayerCard7)
         self.PlayersCardsImageViews.append(self.PlayerCard8)
         self.PlayersCardsImageViews.append(self.PlayerCard9)
+        
         self.DealersCardsImageViews.append(self.DealerCard1)
         self.DealersCardsImageViews.append(self.DealerCard2)
         self.DealersCardsImageViews.append(self.DealerCard3)
@@ -108,16 +123,41 @@ class ViewController: NSViewController {
     
     @IBAction func StandAction(_ sender: NSButton) {
         self.makeDealersDecision()
+        if self.DealerStands {
+            print("dealer stands")
+            self.findResultOfMatchAfterStands()
+        } else {
+            print("dealer hits")
+            // player still has the option to hit even if the dealer busts ;)
+            /*
+            if self.DealersScore > 21 {
+                self.findResultOfMatchAfterStands()
+            }
+             */
+        }
     }
     
     @IBAction func HitAction(_ sender: NSButton) {
         self.playerHits()
+        self.makeDealersDecision()
+        if self.DealerStands {
+            print("dealer stands")
+        } else {
+            print("dealer hits")
+            // player still has the option to hit even if the dealer busts ;)
+            /*
+            if self.DealersScore > 21 {
+                self.findResultOfMatchAfterStands()
+            }
+            */
+        }
     }
     
     func hideOpenningScreenViews() {
-        BlackJackImage.isHidden              = true
         WelcomeToBlackJackTextField.isHidden = true
+        BlackJackImage.isHidden              = true
         DealButton.isHidden                  = true
+        WinRateTextField.isHidden            = false
     }
     
     func showGameTimeViews() {
@@ -127,12 +167,18 @@ class ViewController: NSViewController {
         PlayerCard4.isHidden                 = true
         PlayerCard5.isHidden                 = true
         PlayerCard6.isHidden                 = true
+        PlayerCard7.isHidden                 = true
+        PlayerCard8.isHidden                 = true
+        PlayerCard9.isHidden                 = true
         DealerCard1.isHidden                 = false
         DealerCard2.isHidden                 = false
         DealerCard3.isHidden                 = true
         DealerCard4.isHidden                 = true
         DealerCard5.isHidden                 = true
         DealerCard6.isHidden                 = true
+        DealerCard7.isHidden                 = true
+        DealerCard8.isHidden                 = true
+        DealerCard9.isHidden                 = true
         PlayerScoreTextField.isHidden        = false
         DealerScoreTextField.isHidden        = false
         HitButton.isHidden                   = false
@@ -140,14 +186,30 @@ class ViewController: NSViewController {
     }
     
     func hideGameTimeViews() {
-        DealerCard1.isHidden                 = true
-        DealerCard2.isHidden                 = true
         PlayerCard1.isHidden                 = true
         PlayerCard2.isHidden                 = true
+        PlayerCard3.isHidden                 = true
+        PlayerCard4.isHidden                 = true
+        PlayerCard5.isHidden                 = true
+        PlayerCard6.isHidden                 = true
+        PlayerCard7.isHidden                 = true
+        PlayerCard8.isHidden                 = true
+        PlayerCard9.isHidden                 = true
+        
+        DealerCard1.isHidden                 = true
+        DealerCard2.isHidden                 = true
+        DealerCard3.isHidden                 = true
+        DealerCard4.isHidden                 = true
+        DealerCard5.isHidden                 = true
+        DealerCard6.isHidden                 = true
+        DealerCard7.isHidden                 = true
+        DealerCard8.isHidden                 = true
+        DealerCard9.isHidden                 = true
         PlayerScoreTextField.isHidden        = true
         DealerScoreTextField.isHidden        = true
         HitButton.isHidden                   = true
         StandButton.isHidden                 = true
+        WinRateTextField.isHidden            = true
     }
     
     func showEndOfMatchViews() {
@@ -155,22 +217,16 @@ class ViewController: NSViewController {
         StandButton.isHidden                 = true
         MatchResult.isHidden                 = false
         DealButton.isHidden                  = false
+        MatchResult.alignment                = NSTextAlignment.center
+        let DealerCard2Name = NSImage.Name(self.DealersHand[1].rank.rawValue + self.DealersHand[1].suit.rawValue)
+        self.DealerCard2.image = NSImage(named: DealerCard2Name)
+        self.DealerScoreTextField.stringValue = String(self.DealersScore)
     }
     
     func hideEndOfMatchViews() {
         HitButton.isHidden                   = false
         StandButton.isHidden                 = false
         MatchResult.isHidden                 = true
-    }
-    
-    func startNewGame() {
-        self.FirstHand = true
-        self.PlayersScore = 0
-        self.DealersScore = 0
-        self.DisplayedDealersScore = 0
-        self.DeckIndex = 51
-        self.PlayersHand = [Card]()
-        self.DealersHand = [Card]()
     }
     
     func considerReshuffle() {
@@ -180,19 +236,10 @@ class ViewController: NSViewController {
         }
     }
     
-    func dealNewHand() {
-        
-    }
-    
-    /*
-     ------------- note from stack -------------
-     Thanks to KPM and WolfLink for pointing out that let result = array.dropFirst(n) sets result to an ArraySlice,
-     which will not remain valid if the original array is released.
-     */
-    
     func dealHand() {
         
         self.NumberOfMatchesPlayed += 1
+        self.WinRateTextField.stringValue = String(self.NumberOfMatchesWonByPlayer) + "/" + String(self.NumberOfMatchesPlayed)
         
         var dealtCards = [Card]()
         for i in stride(from:self.DeckIndex, to: self.DeckIndex-4, by: -1) {
@@ -213,8 +260,7 @@ class ViewController: NSViewController {
         let PlayerCard1Name = NSImage.Name(PlayersCards[0].rank.rawValue + PlayersCards[0].suit.rawValue)
         let PlayerCard2Name = NSImage.Name(PlayersCards[1].rank.rawValue + PlayersCards[1].suit.rawValue)
         let DealerCard1Name = NSImage.Name(DealersCards[0].rank.rawValue + DealersCards[0].suit.rawValue)
-        // let DealersHiddenCard = NSImage.Name("gray_back")
-        let DealersHiddenCard = NSImage.Name(DealersCards[1].rank.rawValue + DealersCards[1].suit.rawValue)
+        let DealersHiddenCard = NSImage.Name("gray_back")
         
         PlayerCard1.image = NSImage(named: PlayerCard1Name)
         PlayerCard2.image = NSImage(named: PlayerCard2Name)
@@ -222,11 +268,51 @@ class ViewController: NSViewController {
         DealerCard2.image = NSImage(named: DealersHiddenCard)
         
         PlayerScoreTextField.stringValue = String(self.PlayersScore)
-        DealerScoreTextField.stringValue = String(self.DealersScore)
+        DealerScoreTextField.stringValue = String(self.DisplayedDealersScore)
     }
     
     func makeDealersDecision() {
-        
+        var numberOfAcesInDealersHand = 0
+        var dealersScoreWithoutAces = 0
+        for c in self.DealersHand {
+            if c.rank == Rank.Ace {
+                numberOfAcesInDealersHand += 1
+            } else {
+                dealersScoreWithoutAces += c.value
+            }
+        }
+
+        var validScores = [Int]()
+        for numberOfAcesCountedAsEleven in 0...numberOfAcesInDealersHand {
+            let score = dealersScoreWithoutAces + numberOfAcesCountedAsEleven*11 + numberOfAcesInDealersHand - numberOfAcesCountedAsEleven
+            if score <= 21 {
+                validScores.append(score)
+            }
+        }
+
+        var maxValidScore = -1
+        for vs in validScores {
+            print("a valid dealer score: " + String(vs))
+            if vs > maxValidScore {
+                maxValidScore = vs
+            }
+        }
+
+        if maxValidScore != -1 {
+            if maxValidScore <= 17 {
+                self.dealerHits()
+                self.DealerStands = false
+            } else if maxValidScore > 17 {
+                self.DealerStands = true
+            }
+        } else if self.DealersScore >= 21 {
+            self.DealerStands = true
+        } else if 1 <= self.DealersScore && self.DealersScore <= 13 {
+            self.dealerHits()
+            self.DealerStands = false
+        } else {
+            self.DealerStands = true
+        }
     }
     
     func playerHits() {
@@ -243,17 +329,27 @@ class ViewController: NSViewController {
             }
         }
         self.DeckIndex -= 1
-        self.findResultOfMatch()
-        //        for c in self.deck.Cards {
-        //          print(c.rank.rawValue + " " + c.suit.rawValue + " " + String(c.value))
-        //        }
+        self.findResultOfMatchAfterPlayerHits()
     }
     
     func dealerHits() {
-        
+        let dealersNextCard = self.deck.Cards[self.DeckIndex]
+        self.DealersHand.append(dealersNextCard)
+        self.DealersScore += dealersNextCard.value
+        self.DisplayedDealersScore = self.DealersScore - self.DealersHand[1].value
+        DealerScoreTextField.stringValue = String(self.DisplayedDealersScore)
+        let dealersNextCardName = NSImage.Name(dealersNextCard.rank.rawValue + dealersNextCard.suit.rawValue)
+        for v in self.DealersCardsImageViews {
+            if (v?.isHidden)! {
+                v?.image = NSImage(named: dealersNextCardName)
+                v?.isHidden = false
+                break
+            }
+        }
+        self.DeckIndex -= 1
     }
     
-    func findResultOfMatch() {
+    func findResultOfMatchAfterPlayerHits() {
         var playersScoreWithoutAces = 0
         var numberOfAcesInPlayersHand = 0
         for c in self.PlayersHand {
@@ -276,7 +372,7 @@ class ViewController: NSViewController {
 
         var maxValidScore = -1
         for vs in validScores {
-            print("a valid score: " + String(vs))
+            print("a valid players score: " + String(vs))
             if vs > maxValidScore {
                 maxValidScore = vs
             }
@@ -286,17 +382,106 @@ class ViewController: NSViewController {
             self.PlayersScore = maxValidScore
             self.PlayerScoreTextField.stringValue = String(self.PlayersScore)
         } else if self.PlayersScore >= 21 {
-            MatchResult.stringValue = "Dealer wins"
+            MatchResult.stringValue = "Dealer Wins"
             self.PlayerScoreTextField.stringValue = String(self.PlayersScore)
             self.showEndOfMatchViews()
         }
 
     }
     
-    //for c in self.deck.Cards {
-    //  print(c.rank.rawValue + " " + c.suit.rawValue + " " + String(c.value))
-    //}
-    
-    
+    func findResultOfMatchAfterStands() {
+        var playersScoreWithoutAces = 0
+        var numberOfAcesInPlayersHand = 0
+        for c in self.PlayersHand {
+            if c.rank == Rank.Ace {
+                numberOfAcesInPlayersHand += 1
+            } else {
+                playersScoreWithoutAces += c.value
+            }
+        }
+        print("numberOfAcesInPlayersHand: " + String(numberOfAcesInPlayersHand))
+        print("playersScoreWithoutAces: " + String(playersScoreWithoutAces))
+        
+        var validScores = [Int]()
+        for numberOfAcesCountedAsEleven in 0...numberOfAcesInPlayersHand {
+            let score = playersScoreWithoutAces + numberOfAcesCountedAsEleven*11 + numberOfAcesInPlayersHand - numberOfAcesCountedAsEleven
+            if score <= 21 {
+                validScores.append(score)
+            }
+        }
+        
+        var maxValidScore = -1
+        for vs in validScores {
+            print("a valid player score: " + String(vs))
+            if vs > maxValidScore {
+                maxValidScore = vs
+            }
+        }
+        
+        if maxValidScore != -1 {
+            self.PlayersScore = maxValidScore
+            self.PlayerScoreTextField.stringValue = String(self.PlayersScore)
+        } else if self.PlayersScore >= 21 {
+            self.PlayerScoreTextField.stringValue = String(self.PlayersScore)
+        }
+        
+        var numberOfAcesInDealersHand = 0
+        var dealersScoreWithoutAces = 0
+        for c in self.DealersHand {
+            if c.rank == Rank.Ace {
+                numberOfAcesInDealersHand += 1
+            } else {
+                dealersScoreWithoutAces += c.value
+            }
+        }
+        
+        validScores = [Int]()
+        for numberOfAcesCountedAsEleven in 0...numberOfAcesInDealersHand {
+            let score = dealersScoreWithoutAces + numberOfAcesCountedAsEleven*11 + numberOfAcesInDealersHand - numberOfAcesCountedAsEleven
+            if score <= 21 {
+                validScores.append(score)
+            }
+        }
+        
+        maxValidScore = -1
+        for vs in validScores {
+            print("a valid dealer score: " + String(vs))
+            if vs > maxValidScore {
+                maxValidScore = vs
+            }
+        }
+        
+        if maxValidScore != -1 {
+            self.DealersScore = maxValidScore
+        }
+        
+        if self.PlayersScore > 21 {
+            MatchResult.stringValue = "Dealer Wins"
+            self.PlayerScoreTextField.stringValue = String(self.PlayersScore)
+            self.showEndOfMatchViews()
+        } else if self.DealersScore > 21 && self.PlayersScore <= 21 {
+            MatchResult.stringValue = "Player Wins"
+            self.NumberOfMatchesWonByPlayer += 1
+            self.PlayerScoreTextField.stringValue = String(self.PlayersScore)
+            self.showEndOfMatchViews()
+        } else if self.DealersScore == 21 && self.PlayersScore != 21 {
+            MatchResult.stringValue = "Dealer Wins"
+            self.PlayerScoreTextField.stringValue = String(self.PlayersScore)
+            self.showEndOfMatchViews()
+        } else if self.PlayersScore > self.DealersScore {
+            MatchResult.stringValue = "Player Wins"
+            self.NumberOfMatchesWonByPlayer += 1
+            self.PlayerScoreTextField.stringValue = String(self.PlayersScore)
+            self.showEndOfMatchViews()
+        }  else if self.PlayersScore == self.DealersScore {
+            MatchResult.stringValue = "(Tie) Dealer Wins"
+            self.PlayerScoreTextField.stringValue = String(self.PlayersScore)
+            self.showEndOfMatchViews()
+        } else if self.PlayersScore < self.DealersScore {
+            MatchResult.stringValue = "Dealer Wins"
+            self.PlayerScoreTextField.stringValue = String(self.PlayersScore)
+            self.showEndOfMatchViews()
+        }
+    }
 }
 
