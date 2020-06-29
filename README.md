@@ -32,5 +32,6 @@ Citations:
  2. Playing card PNG's obtained from here: http://acbl.mybigcommerce.com/52-playing-cards/
  3. BlackJack logo: https://iconscout.com/icon/black-jack-2038478
  4. I got the idea of using enumerating ranks and suits in Card classes from this blog post: https://www.associatedtype.net/2017/09/first-steps-with-swift-representing-cards-in-a-deck/
+ 5. Read a little bit about soft-17's on this webpage: http://www.readybetgo.com/blackjack/strategy/soft-17-rule-2496.html#:~:text=Any%20blackjack%20hand%20that%20contains,than%20their%20corresponding%20hard%20hands
 
 Other than that, I pretty much wrote all the code myself (apart from anything & everything I searched up on Stackoverflow and Apple API documentation) except for the shuffle algorithm. But that's probably expected seeing as it's more a logical exercise as opposed to anything else.
