@@ -25,7 +25,7 @@ Improvements:
 2. More source files should be added to group similar functionality together. Collaborating developers can read a single file and expect similar functionality from within a single file.
 
 3. I did not write Unit tests; but here is an interesting one I thought of:
-  - Generate a large list of a possible soft-17 hands and check to see if the Dealer AI recognizes to hit when encountering these hands.
+    - Generate a large list of a possible soft-17 hands and check to see if the Dealer AI recognizes to hit when encountering these hands.
 
 Citations:
  1. Victor Wooding's shuffling algorithm: https://www.youtube.com/watch?v=5hlw-KGfXtY
